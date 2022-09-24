@@ -1,20 +1,18 @@
-const modal_main = document.querySelector('#modal_main');
-const modal__close = document.querySelectorAll('div.modal__close');
+const modalMain = document.querySelector('#modal_main');
+modalMain.classList.add('modal_active');
 
-const show_success = document.querySelector('.show-success');
-const modal_success = document.querySelector('#modal_success');
+const modalCloses = Array.from(document.querySelectorAll('div.modal__close'));
+modalCloses.forEach((item) => {
+  	item.onclick = () => {
+    item.closest('.modal').classList.remove('modal_active');
+  };
+});
 
-modal_main.className = 'modal modal_active';
+const modalSuccess = document.getElementById('modal_success');
+const showSuccess = modalMain.querySelector('.show-success');
+showSuccess.onclick = () => {
+  	modalMain.classList.remove('modal_active');
+  	modalSuccess.classList.add('modal_active');
+};
 
-modal__close[0].onclick = () => {
-	modal_main.className = 'modal'
-}
-show_success.onclick = () => {
-	modal_main.className = 'modal'
-	modal_success.className = 'modal modal_active';
-}
-modal__close[1].onclick = () => {
-	modal_success.className = 'modal';
-	modal_main.className = 'modal';
-}
 
